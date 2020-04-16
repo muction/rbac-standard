@@ -1,5 +1,5 @@
 {
-    "name": "laravel-stars/permission",
+    "name": "rbac/rabc-standard",
     "license": "MIT",
     "keywords": [ "stars-permission","laravel" ,"permission-system"],
     "description": "stars permission system",
