@@ -1,0 +1,13 @@
+{
+    "name": "laravel-stars/permission",
+    "license": "MIT",
+    "keywords": [ "stars-permission","laravel" ,"permission-system"],
+    "description": "stars permission system",
+    "authors": [
+        {
+            "name": "muction",
+            "email": "muction@yeah.net"
+        }
+    ],
+    "require": {}
+}
