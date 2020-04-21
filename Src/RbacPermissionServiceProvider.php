@@ -1,18 +1,15 @@
 <?php
-
-namespace Stars\Permission;
-
-
+namespace Rbac\Standard;
 use Illuminate\Support\ServiceProvider;
 
-class StarsPermissionServiceProvider extends ServiceProvider
+class RbacPermissionServiceProvider extends ServiceProvider
 {
     /**
      * 系统命令
      * @var array
      */
     protected $commands = [
-        \Stars\Permission\Console\Commands\StarsPermissionInit::class
+        \Rbac\Standard\Console\Commands\RbacStandard::class
     ];
 
     /**
@@ -42,10 +39,6 @@ class StarsPermissionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom( __DIR__ .'/Views/', 'stars-permission' );
-        // $this->mergeConfigFrom( __DIR__ . "/starspermission.php", 'stars-permission');
-//        $this->publishes([
-//            __DIR__ . '/starspermission.php' => config_path('starspermission.php'), ], 'stars-permission');
         $this->registryRouteMiddleware();
     }
 
