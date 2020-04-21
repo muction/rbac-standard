@@ -1,11 +1,11 @@
 <?php
-namespace Stars\Permission\Database;
+namespace Rbac\Standard\Database;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class StarsPermissionRoles extends Migration
+class RbacGroupRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,10 @@ class StarsPermissionRoles extends Migration
     public function up()
     {
         //
-        Schema::create( 'stars_permission_roles' , function(Blueprint $table){
+        Schema::create( 'rbac_group_roles' , function(Blueprint $table){
             $table->increments('id');
-            $table->unsignedInteger('permission_id');
-            $table->unsignedInteger('role_id') ;
+            $table->unsignedInteger('group_id') ;
+            $table->unsignedInteger('role_id');
         });
     }
 
@@ -30,6 +30,6 @@ class StarsPermissionRoles extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('stars_permission_roles');
+        Schema::dropIfExists('rbac_group_roles');
     }
 }

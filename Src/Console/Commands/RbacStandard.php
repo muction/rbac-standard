@@ -1,23 +1,27 @@
 <?php
-
-namespace Stars\Permission\Console\Commands;
-
+namespace Rbac\Standard\Console\Commands;
 use Illuminate\Console\Command;
-class StarsPermissionInit extends Command
+
+/**
+ * 生成RBAC必要表
+ * Class RbacStandard
+ * @package Rbac\Standard\Console\Commands
+ */
+class RbacStandard extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'starsPermission:init {down?}';
+    protected $signature = 'rbac:standard';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Init Stars Permission System';
+    protected $description = 'init rbac standard system';
 
     /**
      * Create a new command instance.
@@ -38,11 +42,14 @@ class StarsPermissionInit extends Command
     {
         //
         $initSchemas = [
-          \Stars\Permission\Database\StarsPermissionRoles::class ,
-          \Stars\Permission\Database\StarsRoleUsers::class ,
-          \Stars\Permission\Database\StarsPermissions::class ,
-          \Stars\Permission\Database\StarsUsers::class,
-          \Stars\Permission\Database\StarsRoles::class,
+          \Rbac\Standard\Database\RbacPermissionRoles::class ,
+          \Rbac\Standard\Database\RbacRoleUsers::class ,
+          \Rbac\Standard\Database\RbacPermissions::class ,
+          \Rbac\Standard\Database\RbacUsers::class,
+          \Rbac\Standard\Database\RbacRoles::class,
+          \Rbac\Standard\Database\RbacGroupUsers::class,
+          \Rbac\Standard\Database\RbacGroups::class,
+          \Rbac\Standard\Database\RbacGroupRoles::class,
         ];
 
         foreach ( $initSchemas as $item){
