@@ -17,6 +17,7 @@ class RbacPermissions extends Migration
         //
         Schema::create( 'rbac_permissions' , function(Blueprint $table){
             $table->increments('id');
+            $table->unsignedInteger('type');
             $table->string('name','255')->unique('permission_name');
             $table->string('display_name','255');
             $table->timestamps();

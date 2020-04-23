@@ -14,7 +14,7 @@ class RbacStandard extends Command
      *
      * @var string
      */
-    protected $signature = 'rbac:standard';
+    protected $signature = 'rbac:standard {drop?}';
 
     /**
      * The console command description.
@@ -52,10 +52,23 @@ class RbacStandard extends Command
           \Rbac\Standard\Database\RbacGroupRoles::class,
         ];
 
+        if($this->argument('drop') == 'drop'){
+            if(! $this->confirm("确定操作吗？继续的话将删除所有rbac权限表") ){
+                 $this->info("您取消了操作");
+                 return false;
+            }
+        }
+
         foreach ( $initSchemas as $item){
             try{
                 $schema = new $item();
-                $schema->up();
+                if( $this->argument('drop') == 'drop' ){
+                    $this->info("删除： {$item} 表");
+                    $schema->down();
+                }else{
+                    $this->info("创建： {$item} 表");
+                    $schema->up();
+                }
             }catch (\Exception $exception){
                 $this->warn( '-- '.$exception->getMessage() );
                 $this->line('');

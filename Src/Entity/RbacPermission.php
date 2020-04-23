@@ -9,16 +9,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class RbacPermission extends Model
 {
-    protected $fillable = ['name' ,'display_name'];
+    protected $fillable = [ 'type' , 'name' ,'display_name'];
 
     /**
      * 新增一个权限
+     * @param $type
      * @param $name
      * @param $displayName
      * @return mixed
      */
-    public function storage( $name, $displayName ){
-        return self::create(['name'=>$name ,'display_name'=>$displayName]);
+    public function storage($type, $name, $displayName ){
+        return self::create(['type'=>$type , 'name'=>$name ,'display_name'=>$displayName]);
     }
 
     /**
