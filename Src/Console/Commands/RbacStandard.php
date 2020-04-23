@@ -45,6 +45,7 @@ class RbacStandard extends Command
           \Rbac\Standard\Database\RbacPermissionRoles::class ,
           \Rbac\Standard\Database\RbacRoleUsers::class ,
           \Rbac\Standard\Database\RbacPermissions::class ,
+          \Rbac\Standard\Database\RbacPermissionTypes::class ,
           \Rbac\Standard\Database\RbacUsers::class,
           \Rbac\Standard\Database\RbacRoles::class,
           \Rbac\Standard\Database\RbacGroupUsers::class,
