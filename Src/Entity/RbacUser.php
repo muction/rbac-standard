@@ -126,7 +126,7 @@ class RbacUser extends Model
      * @param array $ids
      * @return int
      */
-    public function removeGroups(array $ids ){
+    public function deleteGroups(array $ids ){
         return $this->groups()->detach( $ids );
     }
 
