@@ -4,12 +4,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * 权限
- * Class RbacPermission
+ * Class RbacPermissionType
  * @package Rbac\Standard\Entity
  */
-class RbacPermission extends Model
+class RbacPermissionType extends Model
 {
-    protected $fillable = [ 'type' , 'name' ,'display_name'];
+    protected $fillable = [ 'name' ,'display_name'];
 
     /**
      * 新增一个权限
@@ -18,8 +18,8 @@ class RbacPermission extends Model
      * @param $displayName
      * @return mixed
      */
-    public function storage($type, $name, $displayName ){
-        return self::create(['type'=>$type , 'name'=>$name ,'display_name'=>$displayName]);
+    public function storage( $name, $displayName ){
+        return self::create(['name'=>$name ,'display_name'=>$displayName]);
     }
 
     /**
@@ -55,15 +55,15 @@ class RbacPermission extends Model
      * @param int $roleId
      * @return mixed
      */
-    public function appendToRole(int $roleId ){
-        return $this->roles()->attach( $roleId );
+    public function appendToPermission(int $roleId ){
+        return $this->permissions()->attach( $roleId );
     }
 
     /**
      * 多对多
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function roles(){
-        return $this->belongsToMany( StarsRole::class ,'rbac_permission_roles', 'permission_id','role_id' );
+    public function permissions(){
+        return $this->hasMany( RbacPermission::class ,'type','id');
     }
 }

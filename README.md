@@ -4,5 +4,4 @@
     
     运行命令： php artisan rbac:standard
 
-### 二、方法说明
  

@@ -49,5 +49,29 @@ class RbacGroup extends Model
         return self::where('id' , $id)->first();
     }
 
+    /**
+     * 添加角色关联
+     * @param array $roleId
+     * @return mixed
+     */
+    public function bindRoles(array $roleIds ){
+        return $this->roles()->attach( $roleIds );
+    }
 
+    /**
+     * 删除指定角色
+     * @param array $ids
+     * @return int
+     */
+    public function deleteRoles(array $ids ){
+        return $this->roles()->detach( $ids );
+    }
+
+    /**
+     * 关联关系
+     * @return mixed
+     */
+    public function roles(){
+        return $this->belongsToMany( RbacRole::class, 'rbac_group_roles', 'group_id','role_id'  );
+    }
 }

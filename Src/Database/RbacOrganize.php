@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RbacPermissions extends Migration
+class RbacOrganize extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +15,13 @@ class RbacPermissions extends Migration
     public function up()
     {
         //
-        Schema::create( 'rbac_permissions' , function(Blueprint $table){
+        Schema::create( 'rbac_organizes' , function(Blueprint $table){
             $table->increments('id');
-            $table->unsignedInteger('type');
-            $table->string('name','255')->unique('permission_name');
+            $table->unsignedInteger('parent_id')->default( 0);
+            $table->string('name','125')->unique('name');
+            $table->string('alias','125')->unique('alias');
             $table->string('display_name','255');
+            $table->unsignedInteger('level')->default(1);
             $table->timestamps();
         });
     }
@@ -32,7 +34,6 @@ class RbacPermissions extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('rbac_permissions');
-
+        Schema::dropIfExists('rbac_organizes');
     }
 }
