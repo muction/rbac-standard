@@ -9,5 +9,8 @@
             "email": "muction@yeah.net"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "Rbac\\Standard\\" : "./Src"
+    }
 }
