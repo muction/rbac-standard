@@ -11,6 +11,8 @@
     ],
     "require": {},
     "autoload": {
-        "Rbac\\Standard\\" : "./Src"
+        "psr-4": {
+            "Rbac\\Standard\\" : "./Src"
+        }
     }
 }
